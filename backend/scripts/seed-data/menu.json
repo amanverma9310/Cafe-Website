@@ -1,0 +1,642 @@
+{
+  "categories": [
+    {
+      "value": "soups",
+      "label": "Soups"
+    },
+    {
+      "value": "salads",
+      "label": "Salads"
+    },
+    {
+      "value": "brunch",
+      "label": "Brunch"
+    },
+    {
+      "value": "smoothies",
+      "label": "Smoothies"
+    },
+    {
+      "value": "hummus",
+      "label": "Hummus"
+    },
+    {
+      "value": "small-plates",
+      "label": "Small Plates"
+    },
+    {
+      "value": "burgers-wraps",
+      "label": "Burgers & Wraps"
+    },
+    {
+      "value": "pasta",
+      "label": "Pasta"
+    },
+    {
+      "value": "pizza",
+      "label": "Pizza"
+    },
+    {
+      "value": "mains",
+      "label": "Mains"
+    },
+    {
+      "value": "desserts",
+      "label": "Desserts"
+    },
+    {
+      "value": "drinks",
+      "label": "Drinks"
+    }
+  ],
+  "main": [
+    {
+      "name": "Carrot & Ginger Soup",
+      "description": "Fire-roasted carrot and candied ginger with whipped cashew cream.",
+      "price": "₹425",
+      "category": "soups"
+    },
+    {
+      "name": "Mint and Pea Cold Soup",
+      "description": "Pea and mint gazpacho with kaffir lime oil.",
+      "price": "₹425",
+      "category": "soups"
+    },
+    {
+      "name": "Mushroom Cappucino",
+      "description": "Wild mushroom soup, grilled mushroom, black-pepper cashew cream and herb oil.",
+      "price": "₹445",
+      "category": "soups"
+    },
+    {
+      "name": "Green Agama Funghi",
+      "description": "Sauteed kale, crisp greens, roasted mushroom, vegan parmesan and green-apple salsa.",
+      "price": "₹495",
+      "category": "salads"
+    },
+    {
+      "name": "Textures of Beetroot",
+      "description": "Salt-baked beetroot carpaccio and arugula on smoked beetroot puree.",
+      "price": "₹495",
+      "category": "salads"
+    },
+    {
+      "name": "Jungle Salad",
+      "description": "Seasonal leaves and vegetables tossed in leche de tigre with chunky hummus.",
+      "price": "₹495",
+      "category": "salads"
+    },
+    {
+      "name": "Citrus Tofu & Melon Salad",
+      "description": "Description requires confirmation from the cafe.",
+      "price": "₹525",
+      "category": "salads"
+    },
+    {
+      "name": "Spiced Honey & Orange French Toast",
+      "description": "Thick toast with spiced honey, orange caramel, candied orange and cashew butter.",
+      "price": "₹425",
+      "category": "brunch"
+    },
+    {
+      "name": "Blueberry & Almond French Toast",
+      "description": "Thick toast with blueberry jam, almond flakes and almond butter.",
+      "price": "₹425",
+      "category": "brunch"
+    },
+    {
+      "name": "Avocado on Toast",
+      "description": "Sourdough, avocado mousse, organic capers, fines herbs and pico de gallo.",
+      "price": "₹425",
+      "category": "brunch"
+    },
+    {
+      "name": "Tomato Toast",
+      "description": "Sourdough, vegan cheese, tomato sofrito, pumpkin seed and rainbow cherry tomatoes.",
+      "price": "₹425",
+      "category": "brunch"
+    },
+    {
+      "name": "Mushroom Toast",
+      "description": "Wild mushroom pate, grilled mushroom, truffle aioli and parsley oil.",
+      "price": "₹395",
+      "category": "brunch"
+    },
+    {
+      "name": "Very Berry Bowl",
+      "description": "Berries and chia smoothie with ashwagandha and Agama granola.",
+      "price": "₹475",
+      "category": "smoothies"
+    },
+    {
+      "name": "Bro Charger",
+      "description": "Plant protein and peanut butter smoothie with gond katira, banana and cacao nibs.",
+      "price": "₹475",
+      "category": "smoothies"
+    },
+    {
+      "name": "Chocolate Smoothie Bowl",
+      "description": "Coconut and overnight oats with almonds, cacao, granola and maple syrup.",
+      "price": "₹475",
+      "category": "smoothies"
+    },
+    {
+      "name": "Keep It Green",
+      "description": "Avocado and almond smoothie with green apple, basil seeds and dark-chocolate granola.",
+      "price": "₹475",
+      "category": "smoothies"
+    },
+    {
+      "name": "Falafel Hummus",
+      "description": "Falafel, hummus, marinated olives, tabouleh and whole-wheat pita bread.",
+      "price": "₹575",
+      "category": "hummus"
+    },
+    {
+      "name": "Roasted Carrot Mash",
+      "description": "Roasted carrot hummus, wild garlic chimichurri, olives and whole-wheat pita.",
+      "price": "₹425",
+      "category": "hummus"
+    },
+    {
+      "name": "Beetroot Hummus",
+      "description": "Hummus with marinated olives and whole-wheat pita bread.",
+      "price": "₹425",
+      "category": "hummus"
+    },
+    {
+      "name": "Black Gram Hummus",
+      "description": "Black gram hummus, marinated olives and whole-wheat pita bread.",
+      "price": "₹425",
+      "category": "hummus"
+    },
+    {
+      "name": "Hummus Sharing Platter",
+      "description": "Hummus selection, falafel, olives, fried chickpeas, tabouleh and pita.",
+      "price": "₹875",
+      "category": "hummus"
+    },
+    {
+      "name": "Sweet Potato Fries",
+      "description": "Double-cooked red garnet yams with Madras curry aioli.",
+      "price": "₹395",
+      "category": "small-plates"
+    },
+    {
+      "name": "Vegan Loaded Nachos",
+      "description": "Maize nachos, refried beans, vegan mornay, chipotle and pico de gallo.",
+      "price": "₹425",
+      "category": "small-plates"
+    },
+    {
+      "name": "Beetroot Cutlet",
+      "description": "Served with young-garlic chutney and red onion.",
+      "price": "₹425",
+      "category": "small-plates"
+    },
+    {
+      "name": "Truffled Mushroom Croquette",
+      "description": "Fire-roasted mushroom in vegan bechamel, crumbed and fried with garlic aioli.",
+      "price": "₹445",
+      "category": "small-plates"
+    },
+    {
+      "name": "Agama Chaat",
+      "description": "Agama’s take on classic papdi chaat.",
+      "price": "₹325",
+      "category": "small-plates"
+    },
+    {
+      "name": "Mushroom Taco",
+      "description": "King oyster mushroom, pico de gallo and cashew sour cream on soft-shell tacos.",
+      "price": "₹475",
+      "category": "small-plates"
+    },
+    {
+      "name": "Batter-Fried Tofu Taco",
+      "description": "Tofu, salsa, soy glaze and cashew sour cream on handmade soft-shell tacos.",
+      "price": "₹475",
+      "category": "small-plates"
+    },
+    {
+      "name": "Avocado Fritters",
+      "description": "Golden-fried avocado with apricot and chilli chutney.",
+      "price": "₹575",
+      "category": "small-plates"
+    },
+    {
+      "name": "Vegan Shakshuka",
+      "description": "Turkish tomato and pepper masala with whipped tofu and toasted bread.",
+      "price": "₹425",
+      "category": "small-plates"
+    },
+    {
+      "name": "Root Vegetable & Lotus Stem Burger",
+      "description": "Root-vegetable patty, crispy lotus chips, house cheese and butterhead.",
+      "price": "₹525",
+      "category": "burgers-wraps"
+    },
+    {
+      "name": "Mushroom Galawat Burger",
+      "description": "Mushroom galouti, pickled onions and carrot and red-cabbage slaw.",
+      "price": "₹525",
+      "category": "burgers-wraps"
+    },
+    {
+      "name": "Pintxo ‘Kakori’ Wrap",
+      "description": "Pintxo bean seekh kebab, carrot and radish slaw with young-garlic chutney.",
+      "price": "₹445",
+      "category": "burgers-wraps"
+    },
+    {
+      "name": "Breakfast Tofu Burrito",
+      "description": "Scrambled tofu with sesame ajo blanco and shredded lettuce.",
+      "price": "₹445",
+      "category": "burgers-wraps"
+    },
+    {
+      "name": "Classic Falafel Wrap",
+      "description": "Falafel, hummus, fermented pickle and garlic toum.",
+      "price": "₹445",
+      "category": "burgers-wraps"
+    },
+    {
+      "name": "Zucchini A.O.P",
+      "description": "Zoodles and spaghetti with garlic, parsley, pickled chilli and vegan parmesan.",
+      "price": "₹525",
+      "category": "pasta"
+    },
+    {
+      "name": "Cherry Tomato Concasse",
+      "description": "Rainbow cherry tomatoes, basil and Italian chilli flakes.",
+      "price": "₹575",
+      "category": "pasta"
+    },
+    {
+      "name": "Agama Hot Sauce Arrabbiata",
+      "description": "Fermented chilli paste, pomodoro, confit garlic and parsley.",
+      "price": "₹595",
+      "category": "pasta"
+    },
+    {
+      "name": "Mamma Rossa",
+      "description": "Pomodoro, whipped tofu, vegan parmesan and herb oil.",
+      "price": "₹595",
+      "category": "pasta"
+    },
+    {
+      "name": "Cauliflower & Mushroom Bolognese",
+      "description": "Slow-braised cauliflower and cremini mushroom with capers and casarecce.",
+      "price": "₹625",
+      "category": "pasta"
+    },
+    {
+      "name": "Shroom Cacio e Pepe",
+      "description": "Grilled wild mushrooms and olives in almond and porcini sauce.",
+      "price": "₹625",
+      "category": "pasta"
+    },
+    {
+      "name": "Spaghetti Verde",
+      "description": "Basil and rocket pesto with zucchini, green olives and slow-roasted peppers.",
+      "price": "₹625",
+      "category": "pasta"
+    },
+    {
+      "name": "Margherita",
+      "description": "Pomodoro, vegan mozzarella, basil and extra-virgin olive oil.",
+      "price": "₹595",
+      "category": "pizza"
+    },
+    {
+      "name": "Greenery",
+      "description": "Pomodoro, vegan mozzarella, zucchini, green olives, rocket pesto and parmesan.",
+      "price": "₹675",
+      "category": "pizza"
+    },
+    {
+      "name": "Holy Eggplant",
+      "description": "Pomodoro, miso-roasted eggplant, dukkah, mushrooms and confit lemon.",
+      "price": "₹695",
+      "category": "pizza"
+    },
+    {
+      "name": "Shroom Out",
+      "description": "Cashew cream, confit lemon and black olives.",
+      "price": "₹695",
+      "category": "pizza"
+    },
+    {
+      "name": "Gardenia",
+      "description": "Pomodoro, vegan mozzarella, corn, jalapeno and zucchini.",
+      "price": "₹545",
+      "category": "pizza"
+    },
+    {
+      "name": "Red Lion",
+      "description": "Pomodoro, vegan mozzarella, sun-dried tomato, roasted onion, peppers and arugula.",
+      "price": "₹575",
+      "category": "pizza"
+    },
+    {
+      "name": "Healer",
+      "description": "Pomodoro, vegan mozzarella, black olives, baby spinach and mushroom.",
+      "price": "₹575",
+      "category": "pizza"
+    },
+    {
+      "name": "Tofu Noodle Bowl",
+      "description": "Fried tofu and buckwheat noodles with peanut-butter and soy sauce.",
+      "price": "₹625",
+      "category": "mains"
+    },
+    {
+      "name": "Black Rice Risotto",
+      "description": "Black-rice risotto, red-pepper stew and red-cabbage sauerkraut.",
+      "price": "₹725",
+      "category": "mains"
+    },
+    {
+      "name": "Agama Asian Bowl",
+      "description": "Quinoa and seasonal vegetables in a soy-based umami sauce.",
+      "price": "₹675",
+      "category": "mains"
+    },
+    {
+      "name": "Sweet Corn Khichdi",
+      "description": "Corn khees tempered in coconut milk, served with aloo papad.",
+      "price": "₹645",
+      "category": "mains"
+    },
+    {
+      "name": "Spinach Tofu Bowl",
+      "description": "Batter-fried tofu with saffron pilaf and cumin-spinach veloute.",
+      "price": "₹695",
+      "category": "mains"
+    },
+    {
+      "name": "Lion’s Mane Steak",
+      "description": "Lion’s mane and home-grown mushroom seared in a tangy house sauce.",
+      "price": "₹895",
+      "category": "mains"
+    },
+    {
+      "name": "PBJ",
+      "description": "Honey toast with in-house peanut praline and plum jam.",
+      "price": "₹445",
+      "category": "desserts"
+    },
+    {
+      "name": "Deconstructed Chocolate & Cherry/Plum Cake",
+      "description": "Chocolate cake, ganache and seasonal cherries or plums.",
+      "price": "₹445",
+      "category": "desserts"
+    },
+    {
+      "name": "Cheesecake Deconstructed",
+      "description": "Classic cheesecake with berry compote and date crumble.",
+      "price": "₹445",
+      "category": "desserts"
+    },
+    {
+      "name": "Spicy Melon",
+      "description": "Fresh melon, house syrup and a dash of Tabasco.",
+      "price": "₹345",
+      "category": "drinks"
+    },
+    {
+      "name": "Virgin Mojito",
+      "description": "Fresh mint and lime, house syrup and club soda.",
+      "price": "₹299",
+      "category": "drinks"
+    },
+    {
+      "name": "Watermelon & Basil Cooler",
+      "description": "Fresh watermelon and basil, house syrup and club soda.",
+      "price": "₹345",
+      "category": "drinks"
+    },
+    {
+      "name": "Virgin Pina Colada",
+      "description": "Pineapple and coconut cream.",
+      "price": "₹299",
+      "category": "drinks"
+    },
+    {
+      "name": "Orange Sunrise",
+      "description": "Kaffir lime, orange juice and a dash of grenadine.",
+      "price": "₹299",
+      "category": "drinks"
+    },
+    {
+      "name": "Cappuccino",
+      "description": "Freshly prepared coffee.",
+      "price": "₹250",
+      "category": "drinks"
+    },
+    {
+      "name": "Cafe Latte",
+      "description": "Freshly prepared coffee.",
+      "price": "₹299",
+      "category": "drinks"
+    },
+    {
+      "name": "Americano",
+      "description": "Freshly prepared coffee.",
+      "price": "₹200",
+      "category": "drinks"
+    }
+  ],
+  "glutenFree": [
+    {
+      "name": "Carrot & Ginger Soup",
+      "description": "Fire-roasted carrot, candied ginger and cashew cream.",
+      "price": "₹445",
+      "category": "soups",
+      "tags": [
+        "Gluten free"
+      ]
+    },
+    {
+      "name": "Sage Pumpkin Soup",
+      "description": "Creamy pumpkin and sage soup.",
+      "price": "₹445",
+      "category": "soups",
+      "tags": [
+        "Gluten free"
+      ]
+    },
+    {
+      "name": "Green Agama Funghi",
+      "description": "Kale, crisp greens, roasted mushrooms and vegan parmesan.",
+      "price": "₹495",
+      "category": "salads",
+      "tags": [
+        "Gluten free"
+      ]
+    },
+    {
+      "name": "Charred Carrot & Beetroot",
+      "description": "Smoky roots, rocket, gooseberry and spicy orange dressing.",
+      "price": "₹525",
+      "category": "salads",
+      "tags": [
+        "Gluten free"
+      ]
+    },
+    {
+      "name": "Loaded Nachos",
+      "description": "Maize nachos, beans, vegan mornay and avocado mousse.",
+      "price": "₹595",
+      "category": "small-plates",
+      "tags": [
+        "Gluten free"
+      ]
+    },
+    {
+      "name": "Tofu Satay",
+      "description": "Peanut-and-soy-marinated tofu, grilled to perfection.",
+      "price": "₹495",
+      "category": "small-plates",
+      "tags": [
+        "Gluten free"
+      ]
+    },
+    {
+      "name": "Black Rice Dosa",
+      "description": "Farm-fresh black-rice dosa with sambar and chutneys.",
+      "price": "₹375",
+      "category": "small-plates",
+      "tags": [
+        "Gluten free"
+      ]
+    },
+    {
+      "name": "Agama Asian Bowl",
+      "description": "Silken tofu and seasonal vegetables with quinoa or buckwheat noodles.",
+      "price": "₹675",
+      "category": "mains",
+      "tags": [
+        "Gluten free"
+      ]
+    },
+    {
+      "name": "Lion’s Mane Steak",
+      "description": "Mushrooms, grilled vegetables and mashed potatoes.",
+      "price": "₹895",
+      "category": "mains",
+      "tags": [
+        "Gluten free"
+      ]
+    },
+    {
+      "name": "Coconut Panna Cotta",
+      "description": "Coconut cream and mixed-berry compote.",
+      "price": "₹495",
+      "category": "desserts",
+      "tags": [
+        "Gluten free"
+      ]
+    }
+  ],
+  "onionGarlicFree": [
+    {
+      "name": "Diced Mushroom Toast",
+      "description": "Mushroom duxelle, grilled mushroom, truffle and parsley oil.",
+      "price": "₹445",
+      "category": "brunch",
+      "tags": [
+        "Onion & garlic free"
+      ]
+    },
+    {
+      "name": "Tofu and Baked Beans",
+      "description": "Scrambled cheesy tofu piled with baked beans.",
+      "price": "₹445",
+      "category": "brunch",
+      "tags": [
+        "Onion & garlic free"
+      ]
+    },
+    {
+      "name": "Black Wheat Parantha",
+      "description": "Tofu-and-mushroom-stuffed flatbread with vegan butter and pickle.",
+      "price": "₹425",
+      "category": "brunch",
+      "tags": [
+        "Onion & garlic free"
+      ]
+    },
+    {
+      "name": "Avocado Fritters",
+      "description": "Golden-fried avocado with apricot and chilli chutney.",
+      "price": "₹575",
+      "category": "small-plates",
+      "tags": [
+        "Onion & garlic free"
+      ]
+    },
+    {
+      "name": "Agama Asian Bowl",
+      "description": "Silken tofu and seasonal vegetables with quinoa or buckwheat noodles.",
+      "price": "₹675",
+      "category": "mains",
+      "tags": [
+        "Onion & garlic free"
+      ]
+    },
+    {
+      "name": "Margherita",
+      "description": "Pomodoro, vegan mozzarella, basil and olive oil.",
+      "price": "₹595",
+      "category": "pizza",
+      "tags": [
+        "Onion & garlic free"
+      ]
+    },
+    {
+      "name": "Berry Bliss Cheesecake",
+      "description": "Almond-date crust, cashew cream, silken tofu and berries.",
+      "price": "₹495",
+      "category": "desserts",
+      "tags": [
+        "Onion & garlic free"
+      ]
+    },
+    {
+      "name": "Coconut Panna Cotta",
+      "description": "Coconut cream and mixed-berry compote.",
+      "price": "₹545",
+      "category": "desserts",
+      "tags": [
+        "Onion & garlic free"
+      ]
+    }
+  ],
+  "featuredDishes": [
+    {
+      "name": "Sage Pumpkin Soup",
+      "image": "/assets/food/food-02-sage-pumpkin-soup.png"
+    },
+    {
+      "name": "Vegan Shakshuka",
+      "image": "/assets/food/food-03-vegan-shakshuka.png"
+    },
+    {
+      "name": "Vegan Loaded Nachos",
+      "image": "/assets/food/food-04-vegan-loaded-nachos.png"
+    },
+    {
+      "name": "Avocado Fritters",
+      "image": "/assets/food/food-05-avocado-fritters.png"
+    },
+    {
+      "name": "Mushroom Parfait",
+      "image": "/assets/food/food-06-mushroom-parfait.png"
+    },
+    {
+      "name": "Beetroot Hummus",
+      "image": "/assets/food/food-11-beetroot-hummus.png"
+    }
+  ]
+}

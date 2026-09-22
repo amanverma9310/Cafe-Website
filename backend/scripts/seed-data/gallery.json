@@ -1,0 +1,80 @@
+[
+  {
+    "src": "/assets/hero/agama-cafe-interior.png",
+    "alt": "Warm, naturally lit interior seating at Agama Cafe",
+    "type": "Ambience",
+    "featured": true
+  },
+  {
+    "src": "/assets/food/food-02-sage-pumpkin-soup.png",
+    "alt": "Sage pumpkin soup presented in a white bowl",
+    "type": "Food"
+  },
+  {
+    "src": "/assets/interior/interior-window.png",
+    "alt": "Dining tables beside the large windows at Agama Cafe",
+    "type": "Ambience"
+  },
+  {
+    "src": "/assets/food/food-03-vegan-shakshuka.png",
+    "alt": "Vegan shakshuka served with toast",
+    "type": "Food"
+  },
+  {
+    "src": "/assets/food/food-04-vegan-loaded-nachos.png",
+    "alt": "Vegan loaded nachos with fresh toppings",
+    "type": "Food",
+    "featured": true
+  },
+  {
+    "src": "/assets/drinks/drink-01-fresh-juice.png",
+    "alt": "Fresh citrus drink served with a lemon slice",
+    "type": "Drinks"
+  },
+  {
+    "src": "/assets/food/food-05-avocado-fritters.png",
+    "alt": "Golden avocado fritters with a green dip",
+    "type": "Food"
+  },
+  {
+    "src": "/assets/interior/interior-ambience.png",
+    "alt": "Agama Cafe interior with framed wall art and relaxed seating",
+    "type": "Ambience"
+  },
+  {
+    "src": "/assets/food/food-08-red-lion-pizza.png",
+    "alt": "Red Lion pizza with basil and tomato",
+    "type": "Food"
+  },
+  {
+    "src": "/assets/food/food-10-red-lion-pasta.png",
+    "alt": "Red Lion pasta plated with herbs",
+    "type": "Food"
+  },
+  {
+    "src": "/assets/exterior/exterior-02-entrance.png",
+    "alt": "Plant-lined entrance to Agama Cafe and Bar",
+    "type": "Exterior",
+    "featured": true
+  },
+  {
+    "src": "/assets/food/food-11-beetroot-hummus.png",
+    "alt": "Beetroot hummus finished with greens",
+    "type": "Food"
+  },
+  {
+    "src": "/assets/food/food-12-vegan-cheese-platter.png",
+    "alt": "Agama vegan cheese platter with crisp breads",
+    "type": "Food"
+  },
+  {
+    "src": "/assets/food/food-13-signature-croquettes.png",
+    "alt": "Signature croquettes arranged around a dipping sauce",
+    "type": "Food"
+  },
+  {
+    "src": "/assets/drinks/drink-02-cocktail.png",
+    "alt": "Pink drink in a coupe glass with citrus garnish",
+    "type": "Drinks"
+  }
+]

@@ -1,0 +1,80 @@
+{
+  "business": {
+    "name": "Agama Cafe & Bar",
+    "hindiName": "अगमा कैफे",
+    "strapline": "Farmer’s Experiential Café",
+    "category": "Vegan Restaurant / Vegan Café",
+    "rating": 4.5,
+    "reviewCount": 153,
+    "spend": "₹600–₹1,400 per person",
+    "phone": "+919654007980",
+    "displayPhone": "+91 96540 07980",
+    "address": "M-18, Block M, Greater Kailash II, Greater Kailash, New Delhi, Delhi 110048",
+    "shortAddress": "Greater Kailash II, New Delhi",
+    "plusCode": "G6MR+GX New Delhi, Delhi",
+    "closesAt": "12:00 AM",
+    "whatsappEnabled": false,
+    "links": {
+      "maps": "https://www.google.com/maps/place/Agama+Cafe+and+Bar/@28.5337111,77.2244442,15z/data=!4m10!1m2!2m1!1scafes+near+me!3m6!1s0x390ce1005bcea9b1:0x76533f0ad749a248!8m2!3d28.5337819!4d77.2424043!10e9!16s%2Fg%2F11w8jq69t5?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D",
+      "reservation": "/contact#enquiry",
+      "instagram": null,
+      "orderOnline": null
+    }
+  },
+  "openingHours": [
+    {
+      "day": "Monday",
+      "time": "Confirm timing"
+    },
+    {
+      "day": "Tuesday",
+      "time": "Confirm timing"
+    },
+    {
+      "day": "Wednesday",
+      "time": "Confirm timing"
+    },
+    {
+      "day": "Thursday",
+      "time": "Confirm timing"
+    },
+    {
+      "day": "Friday",
+      "time": "Confirm timing"
+    },
+    {
+      "day": "Saturday",
+      "time": "Confirm timing"
+    },
+    {
+      "day": "Sunday",
+      "time": "Confirm timing"
+    }
+  ],
+  "menuDocuments": [
+    {
+      "title": "Main Menu",
+      "description": "Soups, brunch, small plates, mains, pizza, pasta and more.",
+      "href": "/assets/menu/agama-main-menu.pdf",
+      "image": "/assets/menu/menu-01-main-menu-cover.png"
+    },
+    {
+      "title": "Gluten Free Menu",
+      "description": "A dedicated selection from the supplied gluten-free menu.",
+      "href": "/assets/menu/agama-gluten-free-menu.pdf",
+      "image": "/assets/menu/menu-02-gluten-free-cover.png"
+    },
+    {
+      "title": "Onion & Garlic Free",
+      "description": "Dedicated dishes prepared without onion and garlic.",
+      "href": "/assets/menu/agama-onion-garlic-free-menu.pdf",
+      "image": "/assets/menu/menu-03-onion-garlic-free-cover.png"
+    },
+    {
+      "title": "Bar Menu",
+      "description": "Informational menu document. No online alcohol ordering.",
+      "href": "/assets/menu/agama-bar-menu.pdf",
+      "image": "/assets/menu/menu-04-bar-menu-cover.png"
+    }
+  ]
+}
