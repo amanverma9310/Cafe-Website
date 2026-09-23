@@ -1,13 +1,31 @@
 import { ContactEnquiry } from '../models/ContactEnquiry.js';
 import { ApiError } from '../utils/ApiError.js';
 import { assertObjectId, boolQuery, escapeRegex, pageMeta, pageParams, send } from '../utils/helpers.js';
+import { notifyNewEnquiry, sendEnquiryConfirmation } from '../services/email.service.js';
+
+const THANKS = { message: 'Thank you. Your enquiry has been sent.' };
+const DUPLICATE_WINDOW_MS = 5 * 60 * 1000; // same phone + message within 5 minutes is treated as a repeat/double-submit
 
 export async function submitEnquiry(req, res) {
   const { website, ...data } = req.body;
   // Honeypot: real visitors never see or fill this field. Pretend success so bots learn nothing.
-  if (website) return send(res, { message: 'Thank you. Your enquiry has been sent.' }, { status: 201 });
-  await ContactEnquiry.create(data);
-  send(res, { message: 'Thank you. Your enquiry has been sent.' }, { status: 201 });
+  if (website) return send(res, THANKS, { status: 201 });
+
+  // Duplicate-submission guard: a resubmit (double-click, retry, or basic bot loop) is accepted
+  // but not re-saved or re-emailed — the visitor still sees the same success response either way.
+  const dup = await ContactEnquiry.findOne({
+    phone: data.phone,
+    message: data.message,
+    createdAt: { $gte: new Date(Date.now() - DUPLICATE_WINDOW_MS) },
+  });
+  if (dup) return send(res, THANKS, { status: 201 });
+
+  const doc = await ContactEnquiry.create(data);
+  send(res, THANKS, { status: 201 });
+  // Fire-and-forget: email delivery must never delay or fail the visitor's response. Both helpers
+  // already catch and log their own errors, so nothing here can produce an unhandled rejection.
+  notifyNewEnquiry(doc);
+  sendEnquiryConfirmation(doc);
 }
 
 export async function listEnquiries(req, res) {

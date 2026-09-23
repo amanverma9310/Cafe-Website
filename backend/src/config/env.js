@@ -22,6 +22,17 @@ const schema = z.object({
   MAX_PDF_MB: z.coerce.number().default(25),
   MAX_VIDEO_MB: z.coerce.number().default(60),
   ENABLE_SEED_MEDIA: bool(undefined).optional(),
+  // ---- Enquiry email notifications (optional: enquiries still save to MongoDB without these) ----
+  SMTP_HOST: z.string().optional(),
+  SMTP_PORT: z.coerce.number().default(587),
+  SMTP_SECURE: bool(false),
+  SMTP_USER: z.string().optional(),
+  SMTP_PASS: z.string().optional(),
+  SMTP_FROM: z.string().optional(),
+  ADMIN_NOTIFY_EMAIL: z.string().optional(),
+  SEND_ENQUIRY_CONFIRMATION: bool(true),
+  // ---- Contact-form phone validation ----
+  PHONE_REGION: z.enum(['IN', 'INTL']).default('IN'),
 });
 
 const parsed = schema.safeParse(process.env);
@@ -51,4 +62,14 @@ export const env = {
   cloudinaryConfigured: Boolean(e.CLOUDINARY_CLOUD_NAME && e.CLOUDINARY_API_KEY && e.CLOUDINARY_API_SECRET),
   seedMediaEnabled: e.ENABLE_SEED_MEDIA ?? !isProd,
   limits: { image: e.MAX_IMAGE_MB * 1024 * 1024, pdf: e.MAX_PDF_MB * 1024 * 1024, video: e.MAX_VIDEO_MB * 1024 * 1024 },
+  smtp: {
+    host: e.SMTP_HOST,
+    port: e.SMTP_PORT,
+    secure: e.SMTP_SECURE,
+    user: e.SMTP_USER,
+    pass: e.SMTP_PASS,
+    from: e.SMTP_FROM || e.SMTP_USER,
+    adminEmail: e.ADMIN_NOTIFY_EMAIL,
+    sendConfirmation: e.SEND_ENQUIRY_CONFIRMATION,
+  },
 };

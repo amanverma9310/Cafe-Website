@@ -13,3 +13,5 @@ const make = (windowMs, limit, message) =>
 export const globalLimiter = make(15 * 60 * 1000, 600, 'Too many requests. Please slow down and try again shortly.');
 export const loginLimiter = make(15 * 60 * 1000, 10, 'Too many sign-in attempts. Please wait 15 minutes and try again.');
 export const enquiryLimiter = make(60 * 60 * 1000, 8, 'You have sent several enquiries recently. Please call the cafe or try again later.');
+// Generous: fires once per page view from every visitor, so it needs far more headroom than a form submit.
+export const visitLimiter = make(15 * 60 * 1000, 300, 'Too many requests.');

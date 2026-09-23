@@ -85,4 +85,8 @@ export const enquiryApi = {
   remove: (id) => send('delete', `/enquiries/${id}`),
 };
 
+export const visitApi = {
+  record: (path) => send('post', '/visits', { path }),
+};
+
 export const dashboardApi = { overview: () => get('/dashboard') };

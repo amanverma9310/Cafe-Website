@@ -14,5 +14,7 @@ const schema = new Schema(
   { timestamps: true },
 );
 schema.index({ createdAt: -1 });
+// Used to detect duplicate/repeat submissions (same phone + message) within a short window.
+schema.index({ phone: 1, message: 1, createdAt: -1 });
 
 export const ContactEnquiry = model('ContactEnquiry', schema);

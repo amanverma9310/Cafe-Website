@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Building2, Clock, Images, Inbox, Plus, Star, Tags, UtensilsCrossed } from 'lucide-react';
+import { Building2, Clock, Images, Inbox, Plus, Star, Tags, Users, UtensilsCrossed } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext.jsx';
 import { useAsync } from '../../hooks/useAsync.js';
 import { dashboardApi } from '../../services/index.js';
@@ -21,6 +21,25 @@ const ACTIONS = [
   { to: '/admin/business', label: 'Edit business details', icon: Building2 },
 ];
 
+/** Small dependency-free bar chart for the last 7 days of page views. */
+function VisitTrend({ days }) {
+  const max = Math.max(1, ...days.map((d) => d.count));
+  return (
+    <div className="mt-5 flex items-end gap-2" style={{ height: 84 }}>
+      {days.map((d) => (
+        <div key={d.date} className="flex flex-1 flex-col items-center gap-1.5">
+          <div
+            className="w-full rounded-t bg-emerald-700/80"
+            style={{ height: Math.max(4, Math.round((d.count / max) * 64)) }}
+            title={`${d.label}: ${d.count} visit${d.count === 1 ? '' : 's'}`}
+          />
+          <span className="text-[10px] font-medium text-stone-400">{d.label}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export default function Dashboard() {
   const { admin } = useAuth();
   const { data, loading, error, reload } = useAsync(() => dashboardApi.overview(), []);
@@ -40,6 +59,20 @@ export default function Dashboard() {
               </Link>
             ))}
           </div>
+          {data.visits ? (
+            <Card className="mt-6 p-5">
+              <div className="flex items-center justify-between">
+                <h2 className="font-semibold">Website traffic</h2>
+                <Users className="size-4 text-stone-400" aria-hidden="true" />
+              </div>
+              <div className="mt-4 grid grid-cols-3 gap-4">
+                <div><p className="text-2xl font-bold text-stone-900">{data.visits.today}</p><p className="text-sm text-stone-500">Visits today</p></div>
+                <div><p className="text-2xl font-bold text-stone-900">{data.visits.total}</p><p className="text-sm text-stone-500">All-time visits</p></div>
+                <div><p className="text-2xl font-bold text-stone-900">{data.visits.uniqueVisitors}</p><p className="text-sm text-stone-500">Unique visitors (30d)</p></div>
+              </div>
+              <VisitTrend days={data.visits.last7Days} />
+            </Card>
+          ) : null}
           <div className="mt-8 grid gap-6 lg:grid-cols-[1fr_1.4fr]">
             <Card className="p-5">
               <h2 className="font-semibold">Quick actions</h2>

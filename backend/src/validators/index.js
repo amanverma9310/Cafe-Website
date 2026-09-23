@@ -2,6 +2,8 @@ import { z } from 'zod';
 import { DAYS } from '../models/OpeningHours.js';
 import { HERO_PAGES } from '../models/Hero.js';
 import { HOME_SECTION_KEYS, ICONS } from '../models/HomeSection.js';
+import { env } from '../config/env.js';
+import { isDisposableEmail } from '../utils/disposableEmailDomains.js';
 
 export const objectId = z.string().regex(/^[a-f\d]{24}$/i, 'Invalid id');
 const str = (max, msg) => z.string().trim().max(max, msg ?? `Keep this under ${max} characters`);
@@ -65,11 +67,36 @@ export const reviewSchema = z.object({
 });
 export const reviewPatch = z.object({ enabled: bool, featured: bool, displayOrder: order }).strict();
 
-const phone = z.string().trim().regex(/^\+?[0-9\s()-]{7,18}$/, 'Enter a valid phone number');
+// India: optional +91/91/0 prefix + a valid 10-digit mobile number (starts 6-9). INTL: broad E.164-ish shape.
+// Normalizes to a consistent stored format so duplicate-submission checks and admin search work reliably.
+const INDIA_MOBILE_RE = /^(?:\+91|91|0)?([6-9]\d{9})$/;
+const INTL_PHONE_RE = /^\+?[0-9]{7,15}$/;
+const phone = z
+  .string()
+  .trim()
+  .min(1, 'Please enter your phone number')
+  .max(20, 'Enter a valid phone number')
+  .transform((v) => v.replace(/[\s()-]/g, ''))
+  .superRefine((v, ctx) => {
+    const ok = env.PHONE_REGION === 'INTL' ? INTL_PHONE_RE.test(v) : INDIA_MOBILE_RE.test(v);
+    if (!ok) {
+      ctx.addIssue({ code: 'custom', message: env.PHONE_REGION === 'INTL' ? 'Enter a valid phone number' : 'Enter a valid 10-digit Indian mobile number' });
+    }
+  })
+  .transform((v) => {
+    if (env.PHONE_REGION === 'INTL') return v;
+    const m = INDIA_MOBILE_RE.exec(v);
+    return m ? `+91${m[1]}` : v; // invalid input was already flagged by superRefine above; never throw here
+  });
+
+const enquiryEmail = z
+  .email('Enter a valid email')
+  .refine((v) => !isDisposableEmail(v), 'Please use a permanent email address, not a temporary/disposable one');
+
 export const enquirySchema = z.object({
   name: z.string().trim().min(2, 'Please enter your name').max(80),
   phone,
-  email: z.union([z.literal(''), z.email('Enter a valid email')]).optional().default(''),
+  email: z.union([z.literal(''), enquiryEmail]).optional().default(''),
   enquiryType: z.enum(['Reservation', 'General enquiry']).default('General enquiry'),
   message: z.string().trim().min(10, 'Please add at least 10 characters').max(2000),
   preferredDate: z.preprocess(emptyToNull, z.coerce.date().nullable()).optional(),

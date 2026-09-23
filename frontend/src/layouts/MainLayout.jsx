@@ -9,6 +9,7 @@ import Navbar from '../components/layout/Navbar.jsx';
 import ScrollManager from '../routes/ScrollManager.jsx';
 import { SITE_URL } from '../config/navigation.js';
 import { useSite } from '../context/SiteContext.jsx';
+import { useVisitTracker } from '../hooks/useVisitTracker.js';
 import { mediaSrc } from '../utils/media.js';
 
 function restaurantSchema(business, settings) {
@@ -32,6 +33,7 @@ function restaurantSchema(business, settings) {
 export default function MainLayout() {
   const { business, settings, loading, error, reload } = useSite();
   useEffect(() => { document.documentElement.classList.add('public'); return () => document.documentElement.classList.remove('public'); }, []);
+  useVisitTracker(); // records a page view on the public site for the admin dashboard
 
   if (loading) {
     return (
