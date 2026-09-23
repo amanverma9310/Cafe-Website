@@ -9,13 +9,17 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 
 import { env } from './config/env.js';
+
 import { requireCustomHeader } from './middleware/auth.middleware.js';
+
 import {
   errorHandler,
   notFoundHandler,
 } from './middleware/error.middleware.js';
+
 import { globalLimiter } from './middleware/rateLimit.middleware.js';
 import { sanitizeInput } from './middleware/validate.middleware.js';
+
 import routes from './routes/index.js';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
@@ -25,9 +29,13 @@ export function createApp() {
 
   app.disable('x-powered-by');
 
-  // Render sits behind a proxy.
+  // Render runs behind a proxy.
   // Needed for secure cookies and rate limiting.
   app.set('trust proxy', env.TRUST_PROXY);
+
+  // -------------------------------------------------------
+  // SECURITY HEADERS
+  // -------------------------------------------------------
 
   app.use(
     helmet({
@@ -37,51 +45,97 @@ export function createApp() {
     }),
   );
 
-  app.use(
-    cors({
-      origin(origin, cb) {
-        // Allow requests without an Origin header
-        // such as Postman/server-to-server requests.
-        if (!origin) {
-          return cb(null, true);
-        }
+  // -------------------------------------------------------
+  // CORS
+  // -------------------------------------------------------
 
-        const cleanOrigin = origin.replace(/\/$/, '');
+  const corsOptions = {
+    origin(origin, callback) {
+      // Allow requests without Origin header.
+      // Example: Postman, Render health checks,
+      // server-to-server requests, etc.
+      if (!origin) {
+        return callback(null, true);
+      }
 
-        if (env.clientOrigins.includes(cleanOrigin)) {
-          return cb(null, true);
-        }
+      // Remove trailing slash if present.
+      const cleanOrigin = origin.replace(/\/$/, '');
 
-        return cb(new Error(`CORS blocked origin: ${origin}`));
-      },
+      const allowedOrigins = (env.clientOrigins || []).map((item) =>
+        item.replace(/\/$/, ''),
+      );
 
-      credentials: true,
+      if (allowedOrigins.includes(cleanOrigin)) {
+        return callback(null, true);
+      }
 
-      methods: [
-        'GET',
-        'POST',
-        'PUT',
-        'PATCH',
-        'DELETE',
-        'OPTIONS',
-      ],
+      console.error(`CORS blocked origin: ${origin}`);
 
-      allowedHeaders: [
-        'Content-Type',
-        'X-Requested-With',
-      ],
+      return callback(
+        new Error(`CORS blocked origin: ${origin}`),
+      );
+    },
 
-      maxAge: 600,
-    }),
-  );
+    credentials: true,
+
+    methods: [
+      'GET',
+      'POST',
+      'PUT',
+      'PATCH',
+      'DELETE',
+      'OPTIONS',
+    ],
+
+    allowedHeaders: [
+      'Content-Type',
+      'Authorization',
+      'X-Requested-With',
+      'Accept',
+      'Origin',
+    ],
+
+    exposedHeaders: [
+      'Content-Length',
+      'Content-Type',
+    ],
+
+    optionsSuccessStatus: 204,
+
+    // Cache preflight response for 10 minutes.
+    maxAge: 600,
+  };
+
+  app.use(cors(corsOptions));
+
+  // Explicitly handle preflight requests.
+  app.options('*', cors(corsOptions));
+
+  // -------------------------------------------------------
+  // COMPRESSION
+  // -------------------------------------------------------
 
   app.use(compression());
 
+  // -------------------------------------------------------
+  // LOGGING
+  // -------------------------------------------------------
+
   if (env.NODE_ENV !== 'test') {
-    app.use(morgan(env.isProd ? 'combined' : 'dev'));
+    app.use(
+      morgan(env.isProd ? 'combined' : 'dev'),
+    );
   }
 
+  // -------------------------------------------------------
+  // COOKIES
+  // -------------------------------------------------------
+
   app.use(cookieParser());
+
+  // -------------------------------------------------------
+  // BODY PARSERS
+  // -------------------------------------------------------
 
   app.use(
     express.json({
@@ -96,40 +150,40 @@ export function createApp() {
     }),
   );
 
-  /*
-   * -------------------------------------------------------
-   * STATIC SEED IMAGES
-   * -------------------------------------------------------
-   *
-   * Current structure:
-   *
-   * backend/
-   *   seed-assets/
-   *     interior/
-   *     food/
-   *     drinks/
-   *     hero/
-   *     exterior/
-   *     menu/
-   *   src/
-   *     app.js
-   *
-   * Example:
-   *
-   * backend/seed-assets/interior/interior-seating-wide.png
-   *
-   * becomes:
-   *
-   * /seed-media/interior/interior-seating-wide.png
-   *
-   * IMPORTANT:
-   * Do NOT put this inside:
-   *
-   * if (env.seedMediaEnabled)
-   *
-   * because Render also needs access to these files.
-   */
-  const seedAssetsPath = path.resolve(here, '../seed-assets');
+  // -------------------------------------------------------
+  // STATIC SEED IMAGES
+  // -------------------------------------------------------
+  //
+  // Folder structure:
+  //
+  // backend/
+  //   seed-assets/
+  //     interior/
+  //     food/
+  //     drinks/
+  //     hero/
+  //     exterior/
+  //     menu/
+  //
+  //   src/
+  //     app.js
+  //
+  // Example:
+  //
+  // backend/seed-assets/interior/interior-seating-wide.png
+  //
+  // becomes:
+  //
+  // /seed-media/interior/interior-seating-wide.png
+  //
+  // Keep this enabled in production so Render can serve
+  // the seed images as well.
+  // -------------------------------------------------------
+
+  const seedAssetsPath = path.resolve(
+    here,
+    '../seed-assets',
+  );
 
   app.use(
     '/seed-media',
@@ -139,9 +193,10 @@ export function createApp() {
     }),
   );
 
-  /*
-   * API routes
-   */
+  // -------------------------------------------------------
+  // API ROUTES
+  // -------------------------------------------------------
+
   app.use(
     '/api',
     globalLimiter,
@@ -150,15 +205,22 @@ export function createApp() {
     routes,
   );
 
-  /*
-   * 404 handler must stay AFTER
-   * static files and API routes.
-   */
+  // -------------------------------------------------------
+  // 404 HANDLER
+  // -------------------------------------------------------
+  //
+  // Must stay after all routes.
+  // -------------------------------------------------------
+
   app.use(notFoundHandler);
 
-  /*
-   * Error handler must be last.
-   */
+  // -------------------------------------------------------
+  // ERROR HANDLER
+  // -------------------------------------------------------
+  //
+  // Must always be the final middleware.
+  // -------------------------------------------------------
+
   app.use(errorHandler);
 
   return app;
