@@ -18,6 +18,7 @@ import {
 } from './middleware/error.middleware.js';
 
 import { globalLimiter } from './middleware/rateLimit.middleware.js';
+
 import { sanitizeInput } from './middleware/validate.middleware.js';
 
 import routes from './routes/index.js';
@@ -34,7 +35,7 @@ export function createApp() {
   app.set('trust proxy', env.TRUST_PROXY);
 
   // -------------------------------------------------------
-  // SECURITY HEADERS
+  // SECURITY
   // -------------------------------------------------------
 
   app.use(
@@ -51,16 +52,17 @@ export function createApp() {
 
   const corsOptions = {
     origin(origin, callback) {
-      // Allow requests without Origin header.
-      // Example: Postman, Render health checks,
-      // server-to-server requests, etc.
+      // Allow requests with no Origin header.
+      // Examples: Postman, server-to-server requests,
+      // Render health checks, etc.
       if (!origin) {
         return callback(null, true);
       }
 
-      // Remove trailing slash if present.
+      // Remove trailing slash from requesting origin.
       const cleanOrigin = origin.replace(/\/$/, '');
 
+      // Remove trailing slash from configured origins too.
       const allowedOrigins = (env.clientOrigins || []).map((item) =>
         item.replace(/\/$/, ''),
       );
@@ -102,14 +104,11 @@ export function createApp() {
 
     optionsSuccessStatus: 204,
 
-    // Cache preflight response for 10 minutes.
+    // Cache browser preflight result for 10 minutes.
     maxAge: 600,
   };
 
   app.use(cors(corsOptions));
-
-  // Explicitly handle preflight requests.
-  app.options('*', cors(corsOptions));
 
   // -------------------------------------------------------
   // COMPRESSION
@@ -134,7 +133,7 @@ export function createApp() {
   app.use(cookieParser());
 
   // -------------------------------------------------------
-  // BODY PARSERS
+  // REQUEST BODY
   // -------------------------------------------------------
 
   app.use(
@@ -154,30 +153,14 @@ export function createApp() {
   // STATIC SEED IMAGES
   // -------------------------------------------------------
   //
-  // Folder structure:
-  //
-  // backend/
-  //   seed-assets/
-  //     interior/
-  //     food/
-  //     drinks/
-  //     hero/
-  //     exterior/
-  //     menu/
-  //
-  //   src/
-  //     app.js
-  //
   // Example:
   //
-  // backend/seed-assets/interior/interior-seating-wide.png
+  // backend/seed-assets/interior/image.png
   //
   // becomes:
   //
-  // /seed-media/interior/interior-seating-wide.png
+  // /seed-media/interior/image.png
   //
-  // Keep this enabled in production so Render can serve
-  // the seed images as well.
   // -------------------------------------------------------
 
   const seedAssetsPath = path.resolve(
@@ -208,17 +191,12 @@ export function createApp() {
   // -------------------------------------------------------
   // 404 HANDLER
   // -------------------------------------------------------
-  //
-  // Must stay after all routes.
-  // -------------------------------------------------------
 
   app.use(notFoundHandler);
 
   // -------------------------------------------------------
   // ERROR HANDLER
-  // -------------------------------------------------------
-  //
-  // Must always be the final middleware.
+  // Must always stay last.
   // -------------------------------------------------------
 
   app.use(errorHandler);
